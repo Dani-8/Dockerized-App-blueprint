@@ -1,0 +1,21 @@
+{
+  "name": "dockerized-app",
+  "version": "1.0.0",
+  "description": "\"# new-one\"",
+  "homepage": "https://github.com/Dani-8/new-one#readme",
+  "bugs": {
+    "url": "https://github.com/Dani-8/new-one/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Dani-8/new-one.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  }
+}
