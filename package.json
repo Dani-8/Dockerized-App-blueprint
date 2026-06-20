@@ -1,14 +1,14 @@
 {
   "name": "dockerized-app",
   "version": "1.0.0",
-  "description": "\"# new-one\"",
-  "homepage": "https://github.com/Dani-8/new-one#readme",
+  "description": "\"# Dockerized App\"",
+  "homepage": "https://github.com/Dani-8/Dockerized-App-blueprint#readme",
   "bugs": {
-    "url": "https://github.com/Dani-8/new-one/issues"
+    "url": "https://github.com/Dani-8/Dockerized-App-blueprint.git/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Dani-8/new-one.git"
+    "url": "git+https://github.com/Dani-8/Dockerized-App-blueprint.git"
   },
   "license": "ISC",
   "author": "",
