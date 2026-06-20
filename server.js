@@ -6,5 +6,7 @@ const NODE_ENV = process.env.NODE_ENV || 'production'
 
 // Basic JSON body parser middleware
 app.use(express.json())
+// ------------------------------------------------------
+// ------------------------------------------------------
 
-
+// Structured logging utility
