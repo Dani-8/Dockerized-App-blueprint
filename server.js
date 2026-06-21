@@ -10,7 +10,7 @@ app.use(express.json())
 // ------------------------------------------------------
 
 // Structured logging utility for better log management
-const log = (level, message, meta ={}) => {
+const log = (level, message, meta = {}) => {
     console.log(JSON.stringify({
         timestamp: new Date().toISOString(),
         level,
@@ -18,3 +18,20 @@ const log = (level, message, meta ={}) => {
         ...meta
     }))
 }
+
+// Middleware to log incoming requests
+app.use((req, res, next) => {
+    log('info', 'Incoming request', { method: req.method, url: req.url })
+    next()
+})
+
+
+// Example route
+app.get('/', (req, res) => {
+    res.status(200).json({
+        status: 'success',
+        message: 'Welcome to the Production-Grade DevOps Showcase API!',
+        environment: NODE_ENV,
+        timestamp: new Date().toISOString()
+    })
+})
