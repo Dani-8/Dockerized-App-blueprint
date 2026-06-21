@@ -35,3 +35,8 @@ app.get('/', (req, res) => {
         timestamp: new Date().toISOString()
     })
 })
+
+// Start the server
+const server = app.listen(PORT, () => {
+    log('info', `Server is running on port ${PORT} in ${NODE_ENV} mode`)
+})
