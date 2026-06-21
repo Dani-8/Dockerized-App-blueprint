@@ -36,7 +36,19 @@ app.get('/', (req, res) => {
     })
 })
 
+// Error handling middleware
+app.use((req, res) () => [
+    res.status(404).json({
+        status: 'error',
+        message: 'Resource not found',
+        timestamp: new Date().toISOString()
+    })
+])
+
+
 // Start the server
 const server = app.listen(PORT, () => {
     log('info', `Server is running on port ${PORT} in ${NODE_ENV} mode`)
 })
+
+
