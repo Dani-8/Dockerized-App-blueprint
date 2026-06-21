@@ -9,4 +9,12 @@ app.use(express.json())
 // ------------------------------------------------------
 // ------------------------------------------------------
 
-// Structured logging utility
+// Structured logging utility for better log management
+const log = (level, message, meta ={}) => {
+    console.log(JSON.stringify({
+        timestamp: new Date().toISOString(),
+        level,
+        message,
+        ...meta
+    }))
+}
