@@ -37,13 +37,13 @@ app.get('/', (req, res) => {
 })
 
 // Error handling middleware
-app.use((req, res) () => [
+app.use((req, res) => {
     res.status(404).json({
         status: 'error',
         message: 'Resource not found',
         timestamp: new Date().toISOString()
     })
-])
+})
 
 
 // Start the server
