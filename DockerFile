@@ -21,3 +21,15 @@ COPY . .
 # ==========================================
 # STAGE 2: Runner (Production Image)
 # ==========================================
+
+# We start fresh from a clean Node Alpine image to avoid leaving build tools behind
+FROM node:20-alpine AS runner
+
+# Declare environment variables
+ENV NODE_ENV=production
+ENV PORT=3000
+
+# Set the working directory inside the container
+WORKDIR /app
+
+
