@@ -14,7 +14,7 @@ const log = (level, message, meta = {}) => {
     console.log(JSON.stringify({
         timestamp: new Date().toISOString(),
         level,
-        message,    
+        message,
         ...meta
     }))
 }
@@ -36,8 +36,14 @@ app.get('/', (req, res) => {
     })
 })
 
+// /healthz 
 app.get("/healthz", () => {
-    
+    // 
+    res.status(200).json({
+        status: 'UP',
+        uptime: process.uptime(),
+        timestamp: new Date().toISOString()
+    })
 })
 
 
