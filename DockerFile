@@ -32,4 +32,23 @@ ENV PORT=3000
 # Set the working directory inside the container
 WORKDIR /app
 
+# Create a non-root user to run the application securely
+RUN chown -R node:node /app
 
+# Switch to the non-root user
+USER node
+
+# Copy only the necessary files for production from the builder stage
+COPY --chown=node:node package*json ./
+
+# Install only production dependencies and clean npm cache to reduce image size
+RUN npm ci --only=production && npm cache clean --force
+
+# Copy the application code (excluding development files) from the builder stage
+COPY --chown=node:node server.js ./
+
+# Expose the application port
+EXPOSE 3000
+
+# Start the application using the production server script
+CMD ["node", "server.js"]
