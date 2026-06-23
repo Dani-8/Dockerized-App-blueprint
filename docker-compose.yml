@@ -1,12 +1,20 @@
 # Defines which Docker Compose file format version we are using
 # Version 3.8 supports modern Docker features like services, volumes, and health checks
-version: '3.8'
+version: "3.8"
 
+# "services" contains all the containers/apps that Docker will create and run
+# Each service is usually one container (example: API, database, frontend)
 services:
-  app:
-    build: 
+  # "api" is the name of our service
+  # We can use this name to refer to this container inside Docker
+  api:
+
+    # "build" tells Docker that it needs to create an image for this service
+    build:
+
+      # "context" tells Docker where to look for files needed to build the image
+      # "." means use the current folder
       context: .
-      dockerfile: DockerFile
       
-
-
+      # "dockerfile" tells Docker which Dockerfile to use for building
+      dockerfile: DockerFile
