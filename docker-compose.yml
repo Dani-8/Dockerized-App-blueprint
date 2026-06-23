@@ -1,3 +1,5 @@
+# Defines which Docker Compose file format version we are using
+# Version 3.8 supports modern Docker features like services, volumes, and health checks
 version: '3.8'
 
 services:
