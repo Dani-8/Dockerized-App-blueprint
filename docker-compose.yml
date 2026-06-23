@@ -20,7 +20,7 @@ services:
       dockerfile: DockerFile
 
     # "container_name" gives our running container a custom name
-    container_name: devops-portfolio-api
+    container_name: devops-api
 
     # "ports" connects our computer port with the container port
     # Format: "computer_port:container_port"
@@ -40,7 +40,7 @@ services:
     # "command" replaces the default Docker command
     # This runs when the container starts
     # Here it starts our development server
-    command: npm run dev
+    command: npm start
 
     # "volumes" connects files/folders between our computer and container
     # This allows live updates without rebuilding the image
@@ -53,4 +53,19 @@ services:
       # Prevents local computer node_modules from replacing container ones
       - /app/node_modules
 
-      
+
+    # "healthcheck" lets Docker check if the application is working
+    healthcheck:
+
+      # "test" is the command Docker runs to check the app status
+      # It sends a request to our health endpoint
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:3000/healthz"]
+
+      # How often Docker performs the health check
+      interval: 30s
+
+      # Maximum time Docker waits for the health check response
+      timeout: 5s
+
+      # Number of failed checks before Docker marks the container unhealthy
+      retries: 3
