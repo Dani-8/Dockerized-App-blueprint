@@ -60,7 +60,34 @@ app.use((req, res) => {
 
 // Start the server
 const server = app.listen(PORT, () => {
-    log('info', `Server is running on port ${PORT} in ${NODE_ENV} mode`)
+    log('info', `Server is running on port http://localhost:${PORT} in ${NODE_ENV} mode`)
 })
 
 
+// Handles application shutdown requests and ensures the server
+// stops accepting new connections before the process exits.
+const gracefulShutdown = (signal) => {
+    log('WARN', `Received ${signal}. Starting graceful shutdown process.`)
+
+    server.close(() => {
+        log('INFO', 'HTTP server closed. Exiting process safely.')
+        process.exit(0)
+    })
+
+
+
+    // Forcefully terminate the process if active connections
+    // do not close within the specified timeout period.
+    setTimeout(() => {
+        log('ERROR', 'Could not close active connections in time, forcing hard shutdown.')
+        process.exit(1)
+    }, 10000);
+}
+
+
+
+
+// Listen for operating system termination signals and
+// trigger a graceful shutdown before exiting the application.
+process.on('SIGTERM', () => gracefulShutdown('SIGTERM'));
+process.on('SIGINT', () => gracefulShutdown('SIGINT'));
