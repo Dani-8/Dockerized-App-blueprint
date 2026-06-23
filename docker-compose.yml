@@ -15,6 +15,42 @@ services:
       # "context" tells Docker where to look for files needed to build the image
       # "." means use the current folder
       context: .
-      
+
       # "dockerfile" tells Docker which Dockerfile to use for building
       dockerfile: DockerFile
+
+    # "container_name" gives our running container a custom name
+    container_name: devops-portfolio-api
+
+    # "ports" connects our computer port with the container port
+    # Format: "computer_port:container_port"
+    ports:
+      - "3000:3000"
+
+    # "environment" stores variables that our application can read
+    # These values are passed into the container
+    environment:
+
+      # Sets the app mode to development
+      - NODE_ENV=development
+
+      # Tells our app which port it should run on
+      - PORT=3000
+
+    # "command" replaces the default Docker command
+    # This runs when the container starts
+    # Here it starts our development server
+    command: npm run dev
+
+    # "volumes" connects files/folders between our computer and container
+    # This allows live updates without rebuilding the image
+    volumes:
+      
+      # Mounts the current project folder into /app inside the container
+      - .:/app
+
+      # Creates a separate container folder for node_modules
+      # Prevents local computer node_modules from replacing container ones
+      - /app/node_modules
+
+      
