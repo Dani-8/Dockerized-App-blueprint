@@ -36,15 +36,16 @@ app.get('/', (req, res) => {
     })
 })
 
-// /healthz 
-app.get("/healthz", () => {
-    // 
-    res.status(200).json({
-        status: 'UP',
-        uptime: process.uptime(),
-        timestamp: new Date().toISOString()
-    })
-})
+// /healthz endpoint used to check if the application is running and responding correctly.
+app.get('/healthz', (req, res) => {
+  // Additional checks such as database, Redis, or external service connectivity
+  // can be added here to verify that all required dependencies are healthy.
+  res.status(200).json({
+    status: 'UP',
+    uptime: process.uptime(),
+    timestamp: new Date().toISOString()
+  });
+});
 
 
 // Error handling middleware
