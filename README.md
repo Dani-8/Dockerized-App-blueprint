@@ -7,38 +7,38 @@ A beginner-friendly Docker starter template — multi-stage Alpine build, non-ro
 ## 🗺️ Architecture Overview
 
 ```text
-                                [ docker-compose up ]
-                                        │
-                                        ▼
-                            ┌──────────────────────────────┐
-                            │       Docker Compose         │
-                            │    (docker-compose.yml)      │
-                            └──────────────┬───────────────┘
-                                        │
-                            ┌──────────────▼───────────────┐
-                            │       DockerFile Build       │
-                            ├──────────────────────────────┤
-                            │  Stage 1 — Builder           │
-                            │   • node:20-alpine           │
-                            │   • npm ci (all deps)        │
-                            │   • Copy source files        │
-                            ├──────────────────────────────┤
-                            │  Stage 2 — Runner            │
-                            │   • node:20-alpine (fresh)   │
-                            │   • npm ci --only=production │
-                            │   • Non-root user (node)     │
-                            │   • NODE_ENV=production      │
-                            └──────────────┬───────────────┘
-                                        │
-                            ┌──────────────▼───────────────┐
-                            │     Running Container        │
-                            │      devops-api              │
-                            │   localhost:3000             │
-                            ├──────────────────────────────┤
-                            │  Volume: .:/app (hot reload) │
-                            │  Healthcheck: GET /healthz   │
-                            │  Graceful shutdown: SIGTERM  │
-                            └──────────────────────────────┘
+                                    [ docker-compose up ]
+                                            │
+                                            ▼
+                                ┌──────────────────────────────┐
+                                │       Docker Compose         │
+                                │    (docker-compose.yml)      │
+                                └──────────────┬───────────────┘
+                                            │
+                                ┌──────────────▼───────────────┐
+                                │       DockerFile Build       │
+                                ├──────────────────────────────┤
+                                │  Stage 1 — Builder           │
+                                │   • node:20-alpine           │
+                                │   • npm ci (all deps)        │
+                                │   • Copy source files        │
+                                ├──────────────────────────────┤
+                                │  Stage 2 — Runner            │
+                                │   • node:20-alpine (fresh)   │
+                                │   • npm ci --only=production │
+                                │   • Non-root user (node)     │
+                                │   • NODE_ENV=production      │
+                                └──────────────┬───────────────┘
+                                            │
+                                ┌──────────────▼───────────────┐
+                                │     Running Container        │
+                                │      devops-api              │
+                                │   localhost:3000             │
+                                ├──────────────────────────────┤
+                                │  Volume: .:/app (hot reload) │
+                                │  Healthcheck: GET /healthz   │
+                                │  Graceful shutdown: SIGTERM  │
+                                └──────────────────────────────┘
 ```
 
 ---
