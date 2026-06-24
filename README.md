@@ -8,14 +8,14 @@ A beginner-friendly Docker starter template — multi-stage Alpine build, non-ro
 
 ```text
                          [ docker-compose up ]
-                                  │
-                                  ▼
-                  ┌───────────────────────────────┐
-                  │        Docker Compose         │
-                  │     (docker-compose.yml)      │
-                  └───────────────┬───────────────┘
-                                  │
-                    ┌─────────────▼────────────────┐
+                                   │
+                                   ▼
+                    ┌──────────────────────────────┐
+                    │       Docker Compose         │
+                    │    (docker-compose.yml)      │
+                    └──────────────┬───────────────┘
+                                   │
+                    ┌──────────────▼───────────────┐
                     │       DockerFile Build       │
                     ├──────────────────────────────┤
                     │  Stage 1 — Builder           │
@@ -28,9 +28,9 @@ A beginner-friendly Docker starter template — multi-stage Alpine build, non-ro
                     │   • npm ci --only=production │
                     │   • Non-root user (node)     │
                     │   • NODE_ENV=production      │
-                    └─────────────┬────────────────┘
-                                  │
-                    ┌─────────────▼────────────────┐
+                    └──────────────┬───────────────┘
+                                   │
+                    ┌──────────────▼───────────────┐
                     │     Running Container        │
                     │      devops-api              │
                     │   localhost:3000             │
