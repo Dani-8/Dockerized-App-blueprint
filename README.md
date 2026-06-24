@@ -7,14 +7,14 @@ A beginner-friendly Docker starter template — multi-stage Alpine build, non-ro
 ## 🗺️ Architecture Overview
 
 ```text
-                                        [ docker-compose up ]
-                                                │
-                                                ▼
+                                         [ docker-compose up ]
+                                                   │
+                                                   ▼
                                     ┌──────────────────────────────┐
-                                    │       Docker Compose         │
-                                    │    (docker-compose.yml)      │
+                                    │        Docker Compose        │
+                                    │     (docker-compose.yml)     │
                                     └──────────────┬───────────────┘
-                                                │
+                                                   │
                                     ┌──────────────▼───────────────┐
                                     │       DockerFile Build       │
                                     ├──────────────────────────────┤
@@ -29,7 +29,7 @@ A beginner-friendly Docker starter template — multi-stage Alpine build, non-ro
                                     │   • Non-root user (node)     │
                                     │   • NODE_ENV=production      │
                                     └──────────────┬───────────────┘
-                                                │
+                                                   │
                                     ┌──────────────▼───────────────┐
                                     │     Running Container        │
                                     │      devops-api              │
